@@ -917,21 +917,7 @@
     }, { threshold: 0.15 });
     sections.forEach(section => observer.observe(section));
 
-    const popup = document.getElementById('emailPopup');
-    const popupClose = document.getElementById('popupClose');
-    const popupForm = document.getElementById('popupForm');
-    setTimeout(() => popup.classList.add('visible'), 30000);
-    popupClose.addEventListener('click', () => popup.classList.remove('visible'));
-    popupForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      const email = document.getElementById('popupEmail');
-      if (!email.value || !email.value.includes('@')) {
-        email.focus();
-        return;
-      }
-      popup.innerHTML = '<h3>Děkujeme!</h3><p>Brzy se vám ozveme.</p>';
-      setTimeout(() => popup.classList.remove('visible'), 2000);
-    });
+  
 
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', (event) => {
