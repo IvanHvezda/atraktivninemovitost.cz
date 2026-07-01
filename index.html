@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>atraktivninemovitost.cz | 2D půdorysy a virtuální staging pro realitní makléře</title>
   <!-- SEO meta -->
+<meta name="google-site-verification" content="ACQ7CP2ZMjBb6jzrse5dD7TC51CxMYOM6C5YKcsbpUQ" />
 <meta name="description" content="Profesionální 2D půdorysy a virtuální staging nemovitostí pro realitní makléře v Praze. Dodání do 24 hodin. 2D půdorys od 400 Kč, virtuální staging od 300 Kč/místnost.">
 <meta name="keywords" content="2D půdorys, 3D vizualizace, půdorys nemovitosti, realitní makléř Praha, půdorys bytu, vizualizace bytu">
 <meta name="author" content="atraktivninemovitost.cz">
@@ -118,12 +119,83 @@
       justify-content: space-between;
       gap: 18px;
     }
-    body { padding-top: 140px; }
     .logo { display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .02em; }
     .logo-mark { width: 48px; height: 48px; object-fit: contain; display: block; }
     nav { display: flex; gap: 26px; align-items: center; flex-wrap: wrap; justify-content: center; }
     .nav-cta { display: inline-flex; align-items: center; justify-content: center; padding: 12px 24px; border-radius: 999px; background: var(--accent); color: #fff; font-weight: 700; transition: transform .2s ease, box-shadow .2s ease; white-space: nowrap; }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 16px 30px rgba(230,57,70,.3); }
+    .burger { display: none !important; width: 40px; height: 40px; flex-shrink: 0; padding: 0; border: 0; background: none; cursor: pointer; flex-direction: column; align-items: center; justify-content: center; gap: 7px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .nav-mobile-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,.7);
+      z-index: 990;
+      display: none;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .nav-mobile-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+    .nav-mobile {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: min(300px, 82vw);
+      height: 100vh;
+      height: 100dvh;
+      background: #0e0e0e;
+      border-left: 1px solid rgba(255,255,255,.1);
+      z-index: 995;
+      display: flex;
+      flex-direction: column;
+      padding: 70px 28px 40px;
+      gap: 0;
+      transform: translateX(100%);
+      transition: transform .3s cubic-bezier(.4,0,.2,1);
+      overflow-y: auto;
+    }
+    .nav-mobile.open {
+      transform: translateX(0);
+    }
+    .nav-mobile a {
+      display: block;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #e0e0e0;
+      padding: 16px 0;
+      border-bottom: 1px solid rgba(255,255,255,.07);
+      text-decoration: none;
+    }
+    .nav-mobile a:last-child {
+      border-bottom: none;
+    }
+    .nav-mobile .nav-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 28px;
+      padding: 14px 24px;
+      border-radius: 999px;
+      background: var(--accent);
+      color: #fff;
+      font-weight: 700;
+      border: none;
+    }
+    .burger-close {
+      position: absolute;
+      top: 18px;
+      right: 20px;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 8px;
+      line-height: 1;
+    }
     .hero {
       position: relative;
       min-height: calc(100vh - 140px);
@@ -285,18 +357,8 @@
     .footer-links { display: grid; gap: 12px; }
     .footer-links a:hover { color: var(--accent); }
     .footer-bottom { margin-top: 28px; color: var(--muted); font-size: .95rem; }
-    .popup, .phone-float { position: fixed; z-index: 200; }
-    .phone-float { right: 20px; bottom: 22px; display: flex; background: var(--accent); color: #fff; border-radius: 999px; box-shadow: 0 24px 60px rgba(230,57,70,.3); padding: 16px 20px; font-weight: 700; align-items: center; gap: 12px; }
+    .phone-float { position: fixed; z-index: 200; right: 20px; bottom: 22px; display: flex; background: var(--accent); color: #fff; border-radius: 999px; box-shadow: 0 24px 60px rgba(230,57,70,.3); padding: 16px 20px; font-weight: 700; align-items: center; gap: 12px; }
     .phone-float a { color: #fff; }
-    .popup { left: 50%; top: 50%; transform: translate(-50%, -50%); width: min(420px, calc(100% - 36px)); background: #111; border: 1px solid rgba(255,255,255,.12); border-radius: 28px; box-shadow: 0 32px 90px rgba(0,0,0,.4); padding: 28px; display: none; }
-    .popup.visible { display: block; }
-    .popup h3 { margin: 0 0 12px; }
-    .popup p { margin: 0 0 18px; color: var(--muted); }
-    .popup-form { display: grid; gap: 14px; }
-    .popup-form input { background: #181818; }
-    .popup-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
-    .popup-close { background: transparent; color: #fff; border: 1px solid rgba(255,255,255,.18); }
-    .popup-close:hover { background: rgba(255,255,255,.05); }
     .hero-banner { margin-top: 12px; display: inline-flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 999px; background: rgba(255,255,255,.05); color: #ddd; border: 1px solid rgba(255,255,255,.08); }
     .hero-banner strong { color: #fff; }
     .cta-highlight { color: var(--accent); }
@@ -313,24 +375,143 @@
       .contact-grid { grid-template-columns: 1fr; }
       .footer-inner { grid-template-columns: 1fr; }
       .hero-actions { flex-direction: column; align-items: stretch; }
-      .nav-inner { flex-wrap: wrap; justify-content: space-between; }
-      .top-bar { flex-direction: column; align-items: flex-start; }
-      .top-bar a { margin-top: 8px; }
+      .top-bar {
+        flex-direction: row !important;
+        flex-wrap: nowrap !important;
+        align-items: center !important;
+        justify-content: space-between !important;
+        padding: 6px 10px !important;
+        gap: 4px !important;
+        font-size: .6rem !important;
+      }
+      .top-bar > div {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 4px;
+        overflow: hidden;
+      }
+      #offerMessage {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: clip;
+        flex-shrink: 1;
+        min-width: 0;
+        max-width: none !important;
+        font-size: .6rem;
+      }
+      #countdown {
+        font-size: .6rem;
+        padding: 2px 5px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        gap: 4px;
+      }
+      .top-bar a {
+        padding: 5px 8px !important;
+        font-size: .6rem !important;
+        white-space: nowrap !important;
+        flex-shrink: 0 !important;
+        margin-top: 0 !important;
+      }
+      header nav { display: none !important; }
+      header .nav-cta { display: none !important; }
+      .burger { display: flex !important; }
+      .nav-inner {
+        padding: 10px 16px !important;
+        flex-wrap: nowrap !important;
+        gap: 0 !important;
+        justify-content: space-between !important;
+      }
+      .logo {
+        font-size: .75rem;
+        gap: 6px;
+        min-width: 0;
+        flex-shrink: 1;
+      }
+      .logo-mark {
+        width: 30px;
+        height: 30px;
+        flex-shrink: 0;
+      }
+    }
+    @media (max-width: 480px) {
+      .logo .logo-text {
+        display: none;
+      }
+      .top-bar {
+        font-size: .55rem !important;
+      }
+      #offerMessage {
+        font-size: .55rem;
+      }
+      #countdown {
+        font-size: .55rem;
+      }
+      .top-bar a {
+        font-size: .55rem !important;
+        padding: 4px 7px !important;
+      }
     }
     @media (max-width: 720px) {
       .hero { padding-top: 90px; }
       .section { padding: 60px 18px; }
       .price-card, .review-card, .faq-item, .feature-card, .step-card, .showcase-card { border-radius: 22px; }
       .hero-banner { flex-direction: column; align-items: start; }
-      .popup { padding: 24px; }
       .phone-float { display: flex; }
       .showcase-grid { grid-template-columns: 1fr; }
       .problem-grid, .pricing-grid, .review-grid, .faq-grid { grid-template-columns: 1fr; }
+      .hero-text__text { font-size: 1.2rem; margin-bottom: 20px; }
+    }
+    @media (max-width: 768px) {
+      .hero-slide {
+        background-position: center center;
+        background-size: cover;
+      }
+      .hero-title {
+        font-size: clamp(1.8rem, 6vw, 3rem);
+      }
+      .hero-text__text {
+        font-size: 1.05rem;
+        margin-bottom: 16px;
+      }
+      .hero-text {
+        font-size: .88rem;
+        margin-bottom: 20px;
+      }
+      .phone-float {
+        padding: 11px 14px;
+        font-size: .78rem;
+        gap: 7px;
+        right: 12px;
+        bottom: 14px;
+        max-width: calc(100vw - 24px);
+      }
+      .phone-float svg {
+        width: 13px;
+        height: 13px;
+        flex-shrink: 0;
+      }
+      #an-cookie-reopen {
+        font-size: .7rem !important;
+        padding: 7px 12px !important;
+        left: 12px !important;
+        bottom: 14px !important;
+        gap: 5px !important;
+      }
+      #an-cookie-reopen svg {
+        width: 12px;
+        height: 12px;
+      }
     }
 
   /* ===== STAGE IMAGE STYLES ===== */
   .stage-img-wrap{padding:0!important;gap:0!important;justify-content:flex-start!important;align-items:stretch!important;}
-  .stage-img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;flex:1;min-height:0;}
+  .stage-img{width:100%;height:100%;object-fit:contain;object-position:center center;display:block;flex:1;min-height:0;background:#1a1a1a;}
+  .staging-img-cover{object-fit:cover !important;background:#0e0e0e !important;}
   .stage-img-caption{position:absolute;bottom:0;left:0;right:0;padding:18px 22px;background:linear-gradient(0deg,rgba(0,0,0,.82) 0%,rgba(0,0,0,0) 100%);display:flex;flex-direction:column;gap:4px;}
   .stage-img-caption strong{color:#fff;font-size:.95rem;font-weight:700;}
   .stage-img-caption span{color:rgba(255,255,255,.65);font-size:.82rem;}
@@ -477,10 +658,12 @@
         <a href="#contact">Zajistit cenu</a>
       </div>
       <div class="nav-inner">
-        <a class="logo" href="#hero"><img src="img/logo.png" class="logo-mark" alt="atraktivninemovitost.cz logo"> atraktivninemovitost.cz</a>
+        <a class="logo" href="#hero"><img src="img/logo.png" class="logo-mark" alt="atraktivninemovitost.cz logo"> <span class="logo-text">atraktivninemovitost.cz</span></a>
+        <button class="burger" id="burgerBtn" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
         <nav>
-          <a href="#problem">Máte málo zájemců?</a>
-          <a href="#solution">Jak to funguje?</a>
+          <a href="#problem">Jak to funguje?</a>
           <a href="#staging">Služby</a>
           <a href="#pricing">Ceník</a>
           <a href="#contact">Kontakt</a>
@@ -878,10 +1061,28 @@
         <a href="cookies.html" style="color:var(--muted);text-decoration:none;">Zásady cookies</a>
       </div>
     </footer>
-    
+    <div class="nav-mobile-overlay" id="navOverlay"></div>
+    <nav class="nav-mobile" id="navMobile">
+      <button class="burger-close" id="navClose">✕</button>
+      <a href="#problem" onclick="closeMobileNav()">Máte málo zájemců?</a>
+      <a href="#solution" onclick="closeMobileNav()">Jak to funguje?</a>
+      <a href="#staging" onclick="closeMobileNav()">Služby</a>
+      <a href="#pricing" onclick="closeMobileNav()">Ceník</a>
+      <a href="#contact" onclick="closeMobileNav()">Kontakt</a>
+      <a href="#contact" class="nav-cta" onclick="closeMobileNav()">Chci nabídku</a>
+    </nav>
     <div class="phone-float"><a href="tel:+420734106721"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+420 734 106 721</a></div>
   </div>
   <script>
+
+    function syncHeaderPadding() {
+      var h = document.querySelector('header');
+      if (h) document.body.style.paddingTop = h.offsetHeight + 'px';
+    }
+    syncHeaderPadding();
+    window.addEventListener('resize', syncHeaderPadding);
+    setTimeout(syncHeaderPadding, 100);
+    setTimeout(syncHeaderPadding, 500);
 
     // ===== SHOWROOM JS =====
     function switchProject(id, btn) {
@@ -917,7 +1118,19 @@
     }, { threshold: 0.15 });
     sections.forEach(section => observer.observe(section));
 
-  
+    function closeMobileNav() {
+      document.getElementById('navMobile').classList.remove('open');
+      document.getElementById('navOverlay').classList.remove('open');
+    }
+    document.getElementById('burgerBtn').addEventListener('click', function() {
+      document.getElementById('navMobile').classList.add('open');
+      document.getElementById('navOverlay').classList.add('open');
+    });
+    document.getElementById('navClose').addEventListener('click', closeMobileNav);
+    document.getElementById('navOverlay').addEventListener('click', closeMobileNav);
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeMobileNav();
+    });
 
     const form = document.getElementById('contactForm');
     form.addEventListener('submit', (event) => {
@@ -935,23 +1148,30 @@
 
     const offerMessage = document.getElementById('offerMessage');
     const countdown = document.getElementById('countdown');
-    const actions = [
+    const actionsDesktop = [
       'Virtuální staging 3 místností za 800 Kč',
       'Staging + 2D půdorys — kompletní balíček od 900 Kč',
       '2D půdorys pro 4+kk byty — sleva 20 %'
     ];
+    const actionsMobile = [
+      'Staging 3 místnosti = 800 Kč',
+      'Balíček 2D + staging = 900 Kč',
+      '2D půdorys 4+kk −20 %'
+    ];
     const updateCountdown = () => {
       const now = new Date();
       const msPerPeriod = 8 * 60 * 60 * 1000;
-      const periodIndex = Math.floor(now.getTime() / msPerPeriod) % actions.length;
-      const start = Math.floor(now.getTime() / msPerPeriod) * msPerPeriod;
-      const end = start + msPerPeriod;
+      const periodIndex = Math.floor(now.getTime() / msPerPeriod) % actionsDesktop.length;
+      const end = (Math.floor(now.getTime() / msPerPeriod) + 1) * msPerPeriod;
       const diff = end - now.getTime();
-      const hours = String(Math.floor(diff / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((diff % (1000 * 60)) / 1000)).padStart(2, '0');
+      const hours = String(Math.floor(diff / 3600000)).padStart(2, '0');
+      const minutes = String(Math.floor((diff % 3600000) / 60000)).padStart(2, '0');
+      const seconds = String(Math.floor((diff % 60000) / 1000)).padStart(2, '0');
       countdown.textContent = `${hours}:${minutes}:${seconds}`;
-      offerMessage.textContent = `${actions[periodIndex]}`;
+      const isMobile = window.innerWidth <= 768;
+      offerMessage.textContent = isMobile
+        ? actionsMobile[periodIndex]
+        : actionsDesktop[periodIndex];
     };
     updateCountdown();
     setInterval(updateCountdown, 1000);
@@ -971,8 +1191,8 @@
         wrap.className = 'staging-slider-wrap';
         wrap.innerHTML =
           '<div class="staging-slider" id="stSlider-' + idx + '">' +
-            '<img class="staging-before" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před virtuálním stagingem">' +
-            '<img class="staging-after" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po virtuálním stagingu">' +
+            '<img class="staging-before staging-img-cover" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před virtuálním stagingem">' +
+            '<img class="staging-after staging-img-cover" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po virtuálním stagingu">' +
             '<div class="staging-divider">' +
               '<div class="staging-handle">' +
                 '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">' +
@@ -1021,8 +1241,8 @@
         wrap.className = 'staging-slider-wrap';
         wrap.innerHTML =
           '<div class="staging-slider" id="rnSlider-' + idx + '">' +
-            '<img class="staging-before" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před renovací">' +
-            '<img class="staging-after" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po renovaci">' +
+            '<img class="staging-before staging-img-cover" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před renovací">' +
+            '<img class="staging-after staging-img-cover" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po renovaci">' +
             '<div class="staging-divider">' +
               '<div class="staging-handle">' +
                 '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">' +
