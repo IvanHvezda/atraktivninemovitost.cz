@@ -6,14 +6,14 @@
 <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>atraktivninemovitost.cz | 2D půdorysy a virtuální staging pro realitní makléře</title>
+  <title>Reference | atraktivninemovitost.cz</title>
   <!-- SEO meta -->
 <meta name="google-site-verification" content="ACQ7CP2ZMjBb6jzrse5dD7TC51CxMYOM6C5YKcsbpUQ" />
-<meta name="description" content="Profesionální 2D půdorysy a virtuální staging nemovitostí pro realitní makléře v Praze. Dodání do 24 hodin. 2D půdorys od 400 Kč, virtuální staging od 300 Kč/místnost.">
+<meta name="description" content="Ukázky dokončených projektů — 2D půdorysy, virtuální staging a proměna interiérů pro realitní makléře.">
 <meta name="keywords" content="2D půdorys, 3D vizualizace, půdorys nemovitosti, realitní makléř Praha, půdorys bytu, vizualizace bytu">
 <meta name="author" content="atraktivninemovitost.cz">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://www.atraktivninemovitost.cz/">
+<link rel="canonical" href="https://www.atraktivninemovitost.cz/reference.html">
 
 <!-- Open Graph (sdílení na sociálních sítích) -->
 <meta property="og:type" content="website">
@@ -245,7 +245,7 @@
       z-index: 1;
     }
     .hero-content {
-    
+
   position: relative;
   max-width: 700px;
   z-index: 1;
@@ -648,6 +648,227 @@
     .staging-label-before { left: 10px; }
     .staging-label-after { right: 10px; }
   }
+
+  /* ===== REFERENCE ===== */
+  .ref-section {
+    padding: 60px 24px;
+    border-top: 1px solid var(--border);
+  }
+  .ref-section-title {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    margin: 0 0 12px;
+    font-weight: 800;
+  }
+  .ref-section-desc {
+    color: var(--muted);
+    max-width: 640px;
+    margin: 0 0 36px;
+    line-height: 1.7;
+    font-size: .95rem;
+  }
+  .ref-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .ref-card {
+    border-radius: 18px;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease;
+    position: relative;
+  }
+  .ref-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+  }
+  .ref-card-img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    display: block;
+  }
+  .ref-card-body {
+    padding: 14px 16px 16px;
+  }
+  .ref-card-title {
+    font-size: .92rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 4px;
+  }
+  .ref-card-sub {
+    font-size: .78rem;
+    color: var(--muted);
+    margin: 0;
+  }
+  .ref-card-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(0,0,0,.65);
+    border: 1px solid rgba(255,255,255,.15);
+    color: #fff;
+    font-size: .7rem;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    backdrop-filter: blur(8px);
+    text-transform: uppercase;
+    letter-spacing: .05em;
+  }
+  .ref-card-badge.slider-badge {
+    background: rgba(230,57,70,.25);
+    border-color: rgba(230,57,70,.4);
+  }
+
+  /* ===== LIGHTBOX ===== */
+  .lb-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.92);
+    z-index: 1000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 16px;
+  }
+  .lb-overlay.open {
+    display: flex;
+  }
+  .lb-close {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 1001;
+  }
+  .lb-counter {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,.5);
+    font-size: .82rem;
+    font-family: 'Inter', sans-serif;
+  }
+  .lb-content {
+    width: 100%;
+    max-width: 900px;
+    max-height: 80vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lb-img {
+    max-width: 100%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 12px;
+    display: block;
+    user-select: none;
+  }
+  /* Before/after slider v lightboxu */
+  .lb-slider {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    border-radius: 12px;
+    cursor: col-resize;
+    user-select: none;
+    touch-action: pan-y;
+  }
+  .lb-slider img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  .lb-slider .lb-after {
+    clip-path: inset(0 50% 0 0);
+  }
+  .lb-slider .lb-divider {
+    position: absolute;
+    top: 0; bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    background: rgba(255,255,255,.9);
+    z-index: 10;
+    pointer-events: none;
+  }
+  .lb-slider .lb-handle {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    width: 44px; height: 44px;
+    background: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,.5);
+  }
+  .lb-label {
+    position: absolute;
+    top: 12px;
+    padding: 5px 12px;
+    background: rgba(0,0,0,.6);
+    color: #fff;
+    font-weight: 700;
+    font-size: .72rem;
+    border-radius: 999px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,.15);
+    pointer-events: none;
+    z-index: 11;
+    font-family: 'Inter', sans-serif;
+  }
+  .lb-label-before { left: 12px; }
+  .lb-label-after  { right: 12px; }
+  .lb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    color: #fff;
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: background .2s;
+    z-index: 1002;
+    flex-shrink: 0;
+  }
+  .lb-nav:hover { background: rgba(255,255,255,.2); }
+  .lb-prev { left: -56px; }
+  .lb-next { right: -56px; }
+  @media (max-width: 768px) {
+    .lb-prev { left: 8px; }
+    .lb-next { right: 8px; }
+    .lb-content { max-height: 70vh; }
+    .ref-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; }
+  }
   </style>
 </head>
 <body>
@@ -655,406 +876,68 @@
     <header>
       <div class="top-bar">
         <div>AKCE: <strong id="offerMessage">Balíček 2D+3D s extra revizí zdarma</strong> — zbývá <span class="countdown" id="countdown">00:00:00</span></div>
-        <a href="#contact">Zajistit cenu</a>
+        <a href="index.html#contact">Zajistit cenu</a>
       </div>
       <div class="nav-inner">
-        <a class="logo" href="#hero"><img src="img/logo.png" class="logo-mark" alt="atraktivninemovitost.cz logo"> <span class="logo-text">atraktivninemovitost.cz</span></a>
+        <a class="logo" href="index.html#hero"><img src="img/logo.png" class="logo-mark" alt="atraktivninemovitost.cz logo"> <span class="logo-text">atraktivninemovitost.cz</span></a>
         <button class="burger" id="burgerBtn" aria-label="Menu">
           <span></span><span></span><span></span>
         </button>
         <nav>
-          <a href="#problem">Jak to funguje?</a>
-          <a href="#staging">Služby</a>
-          <a href="#pricing">Ceník</a>
-          <a href="reference.html">Reference</a>
-          <a href="#contact">Kontakt</a>
+          <a href="index.html#problem">Jak to funguje?</a>
+          <a href="index.html#staging">Služby</a>
+          <a href="index.html#pricing">Ceník</a>
+          <a href="reference.html" style="color:var(--accent);">Reference</a>
+          <a href="index.html#contact">Kontakt</a>
         </nav>
-        <a class="nav-cta" href="#contact">Chci nabídku</a>
+        <a class="nav-cta" href="index.html#contact">Chci nabídku</a>
       </div>
     </header>
     <main>
-      <section class="hero" id="hero">
-        <div class="hero-slides" aria-hidden="true">
-          <div class="hero-slide active" style="background-image:url('img/hero-bg.png');"></div>
-        </div>
-        <div class="hero-content">
-          <span class="eyebrow"><span></span>Aktuálně zpracováváme 18 půdorysů</span>
-          <h1 class="hero-title">Rychlejší prodej? Vyšší provize?</h1>
-<p class="hero-text__text">Pomáháme realitním makléřům prodávat rychle skrze prémiový vizuální marketing</p>
-          <p class="hero-text">2D půdorys od 400 Kč | Virtuální staging od 300 Kč/místnost | Dodání do 24 hodin. Získejte lepší inzerát, více prokliků a rychlejší prodej.</p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#contact">Chci nezávaznou ukázku zdarma</a>
-            <a class="btn btn-secondary" href="tel:+420734106721"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Zavolat: +420 734 106 721</a>
-          </div>
+      <section style="padding:60px 24px 40px;text-align:center;">
+        <div class="section-inner">
+          <span class="eyebrow"><span></span>Dokončené projekty</span>
+          <h1 class="section-title">Reference</h1>
+          <p class="section-subtitle" style="margin:0 auto;text-align:center;">
+            Reálné projekty pro realitní makléře — půdorysy, virtuální staging
+            a proměny interiérů. Každý projekt zobrazuje výsledek před a po.
+          </p>
         </div>
       </section>
-      <section id="problem" class="visible">
+
+      <section id="ref-pudorysy" class="ref-section">
         <div class="section-inner">
-          <h2 class="section-title">Proč vaše inzeráty nedostávají dost zájemců?</h2>
-          <p class="section-subtitle">V záplavě tisíců realitních nabídek rozhodují první vteřiny. Pokud prodáváte prázdný byt nebo nemovitost před rekonstrukcí, většina kupujících si její potenciál nedokáže představit. Na projektu atraktivninemitost.cz pro vás tvoříme profesionální 2D půdorysy a virtuální staging, které dají vašim inzerátům jasnou tvář. Ukážeme zájemcům dokonalou vizi jejich budoucího domova, okamžitě zvýšíme sledovanost vaší nabídky a přivedeme na prohlídky pouze vážné zájemce, kteří vědí, do čeho jdou.</p>
-          <div class="grid problem-grid">
-            <div class="feature-card">
-              <div class="feature-icon icon-1"></div>
-              <h3>Inzerát bez půdorysu</h3>
-              <p>dostává o 40 % méně prokliků a méně oslovených zájemců.</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon icon-2"></div>
-              <h3>Důležitost vizualizace</h3>
-              <p>zákazník si nemovitost nedokáže představit bez vizualizace prostoru.</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon icon-3"></div>
-              <h3>Konkurence vyhrává</h3>
-              <p>makléři s vizualizací prodají nemovitost dříve a často za lepší cenu.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="solution">
-        <div class="section-inner">
-          <h2 class="section-title">Jak to funguje — 3 jednoduché kroky</h2>
-          <p class="section-subtitle">Posíláte nám podklady, my vytvoříme jasný a atraktivní půdorys, který pomůže vašemu inzerátu vyniknout.</p>
-          <div class="grid steps">
-            <div class="step-card" data-step="1">
-              <h3>Pošlete nám náčrtek</h3>
-              <p>Náčrtek, fotka nebo PDF půdorysu stačí. My se postaráme o zbytek.</p>
-            </div>
-            <div class="step-card" data-step="2">
-              <h3>Do 24 hodin máte hotovo</h3>
-              <p>Profesionální 2D půdorys nebo virtuální staging připravený k okamžitému použití.</p>
-            </div>
-            <div class="step-card" data-step="3">
-              <h3>Přidejte do inzerátu</h3>
-              <p>Získejte více zájemců, rychlejší prohlídky a lepší nabídky.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-                  <section id="staging">
-        <div class="section-inner">
-          <div class="showroom-header">
-            <span class="eyebrow"><span></span>Výsledky mluví za vše</span>
-            <h2 class="section-title">Z náčrtku na profesionální vizualizaci</h2>
-            <p class="section-subtitle" style="margin:0 auto;text-align:center;">Každý byt prochází dvěma fázemi — od rukou načrtnutého plánu až po profesionální 2D půdorys připravený k inzerci.</p>
-          </div>
-
-          <div style="display:flex;justify-content:center;margin-bottom:40px">
-            <div style="display:inline-flex;align-items:center;gap:32px;padding:18px 32px;border-radius:20px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);flex-wrap:wrap;">
-              <div style="text-align:center">
-                <div style="font-size:1.5rem;font-weight:800;color:var(--muted)">01</div>
-                <div style="font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-top:2px">Náčrtek</div>
-              </div>
-              <svg width="28" height="12" viewBox="0 0 28 12" fill="none" style="flex-shrink:0"><path d="M0 6h22M16 1l6 5-6 5" stroke="rgba(230,57,70,.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              <div style="text-align:center">
-                <div style="font-size:1.5rem;font-weight:800;color:var(--accent)">02</div>
-                <div style="font-size:.75rem;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-top:2px;font-weight:700">2D půdorys</div>
-              </div>
-            </div>
-          </div>
-
-          <div class="project-selector">
-            <button class="proj-tab active" onclick="switchProject('apt1',this)">Byt 2+kk &middot; 48 m&sup2;</button>
-            <button class="proj-tab" onclick="switchProject('apt2',this)">Byt 3+1 &middot; 72 m&sup2;</button>
-            <button class="proj-tab" onclick="switchProject('apt3',this)">Byt 4+kk &middot; 95 m&sup2;</button>
-          </div>
-
-          <!-- APT 1 -->
-          <div class="proj-panel active" id="panel-apt1">
-            <div class="step-switcher">
-              <button class="step-btn active" onclick="switchStep('apt1','sketch',this)"><span class="step-num">1</span>Náčrtek</button>
-              <span class="step-arrow">&#8594;</span>
-              <button class="step-btn" onclick="switchStep('apt1','2d',this)"><span class="step-num">2</span>2D půdorys</button>
-            </div>
-            <div class="stage-display">
-              <div class="stage-frame active" id="apt1-sketch">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge">PŘED</span>
-                  <img class="stage-img" src="2+1.jpg" alt="Ručně načrtnutý půdorys bytu 2+kk" loading="lazy">
-                  <div class="stage-img-caption"><strong>Náčrtek od makléře</strong><span>Stačí fotka z mobilu nebo naskenovaný papír</span></div>
-                </div>
-              </div>
-              <div class="stage-frame" id="apt1-2d">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge accent">PO &mdash; 2D</span>
-                  <img class="stage-img" src=2+1po.png alt="Profesionální 2D půdorys bytu 2+kk" loading="lazy">
-                  <div class="stage-img-caption"><strong>Profesionální 2D půdorys</strong><span>Kóty, rozlohy, orientace &mdash; JPG 4K + PDF do 24h</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="stage-info" id="apt1-info">
-              <div class="stage-info-num">1</div>
-              <div class="stage-info-body">
-                <h4>Náčrtek od makléře</h4>
-                <p>Stačí fotka z mobilu nebo naskenovaný papír. Z tohoto podkladu vytvoříme přesný digitální půdorys.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- APT 2 -->
-          <div class="proj-panel" id="panel-apt2">
-            <div class="step-switcher">
-              <button class="step-btn active" onclick="switchStep('apt2','sketch',this)"><span class="step-num">1</span>Náčrtek</button>
-              <span class="step-arrow">&#8594;</span>
-              <button class="step-btn" onclick="switchStep('apt2','2d',this)"><span class="step-num">2</span>2D půdorys</button>
-            </div>
-            <div class="stage-display">
-              <div class="stage-frame active" id="apt2-sketch">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge">PŘED</span>
-                  <img class="stage-img" src=2+kk.jpg alt="Náčrtek půdorysu bytu 3+1" loading="lazy">
-                  <div class="stage-img-caption"><strong>Ručně načrtnutý půdorys</strong><span>Byt 3+1 &mdash; fotka pořízená na místě</span></div>
-                </div>
-              </div>
-              <div class="stage-frame" id="apt2-2d">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge accent">PO &mdash; 2D</span>
-                  <img class="stage-img" src=2+kk2dpo.png alt="2D půdorys bytu 3+1" loading="lazy">
-                  <div class="stage-img-caption"><strong>Přesný 2D půdorys s kótami</strong><span>Všechny rozlohy, orientace, vstupy &mdash; export JPG 4K nebo PDF</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="stage-info" id="apt2-info">
-              <div class="stage-info-num">1</div>
-              <div class="stage-info-body">
-                <h4>Náčrtek od makléře</h4>
-                <p>Stačí fotka z mobilu nebo naskenovaný papír. Z tohoto podkladu vytvoříme přesný digitální půdorys.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- APT 3 -->
-          <div class="proj-panel" id="panel-apt3">
-            <div class="step-switcher">
-              <button class="step-btn active" onclick="switchStep('apt3','sketch',this)"><span class="step-num">1</span>Náčrtek</button>
-              <span class="step-arrow">&#8594;</span>
-              <button class="step-btn" onclick="switchStep('apt3','2d',this)"><span class="step-num">2</span>2D půdorys</button>
-            </div>
-            <div class="stage-display">
-              <div class="stage-frame active" id="apt3-sketch">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge">PŘED</span>
-                  <img class="stage-img" src=4+kk.jpg alt="Náčrtek půdorysu bytu 4+kk" loading="lazy">
-                  <div class="stage-img-caption"><strong>Podklad od makléře</strong><span>Byt 4+kk &mdash; ručně psané kóty a poznámky</span></div>
-                </div>
-              </div>
-              <div class="stage-frame" id="apt3-2d">
-                <div class="stage-ph stage-img-wrap">
-                  <span class="stage-badge accent">PO &mdash; 2D</span>
-                  <img class="stage-img" src=4+kk2dpo.png alt="2D půdorys bytu 4+kk" loading="lazy">
-                  <div class="stage-img-caption"><strong>Kompletní 2D dokumentace</strong><span>Přesné kóty pro všechny místnosti &mdash; 4+kk hotovo do 24h</span></div>
-                </div>
-              </div>
-            </div>
-            <div class="stage-info" id="apt3-info">
-              <div class="stage-info-num">1</div>
-              <div class="stage-info-body">
-                <h4>Náčrtek od makléře</h4>
-                <p>Stačí fotka z mobilu nebo naskenovaný papír. Z tohoto podkladu vytvoříme přesný digitální půdorys.</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="showroom-cta">
-            <p style="color:var(--muted);margin-bottom:16px;font-size:.95rem;">Chcete vidět, jak by vypadal váš konkrétní byt?</p>
-            <a class="btn btn-primary" href="#contact" style="font-size:1.05rem;padding:18px 42px;box-shadow:0 24px 54px rgba(230,57,70,.28),0 0 0 1px rgba(230,57,70,.15)">Pošlete náčrtek &mdash; ukázku zpracujeme zdarma</a>
-            <p style="margin-top:16px;color:rgba(255,255,255,.3);font-size:.82rem;">Bez závazku &middot; Odpovídáme do 24 hodin &middot; Výstup JPG 4K + PDF</p>
-            <div style="text-align:center;margin-top:20px;">
-              <a href="reference.html" class="btn btn-secondary"
-                 style="padding:12px 24px;font-size:.9rem;">
-                Zobrazit všechny reference
-              </a>
-            </div>
+          <h2 class="ref-section-title">2D půdorysy</h2>
+          <p class="ref-section-desc">
+            Z ručního náčrtku na profesionální 2D půdorys s kótami
+            a rozlohami místností — dodání do 24 hodin.
+          </p>
+          <div class="ref-grid" id="grid-pudorysy">
+            <!-- karty se generují JS -->
           </div>
         </div>
       </section>
 
-      <section>
+      <section id="ref-staging" class="ref-section">
         <div class="section-inner">
-          <div class="staging-intro">
-            <span class="eyebrow"><span></span>Prázdný prostor neprodává</span>
-            <h2 class="section-title">Dejte bytu duši</h2>
-            <p class="staging-subheading">Z prázdných zdí udělejte domov&nbsp;— bez jediné stěhovací krabice</p>
-            <p class="staging-desc">Kupující kupuje pocit, ne metry čtvereční. Prázdný byt ten pocit nedá. Doplníme nábytek, textil a atmosféru přímo do vašich fotek&nbsp;— makléř ušetří čas, majitel ušetří peníze za home staging, a inzerát konečně dostane pozornost, kterou si zaslouží.</p>
-            <p class="staging-desc" style="margin-top:14px;text-align:center;"><strong style="color:var(--text)">Od 300 Kč</strong> za místnost &nbsp;&middot;&nbsp; <strong style="color:var(--text)">3 místnosti od 800 Kč</strong> &nbsp;&middot;&nbsp; celý byt od <strong style="color:var(--text)">1 250 Kč</strong></p>
-          </div>
-          <!-- Before/after sliders — konfigurujte přes pole stagingPairs v JS níže -->
-          <div id="stagingSliders"></div>
-          <div class="staging-cta">
-            <a class="btn btn-primary" href="#contact" style="font-size:1.05rem;padding:18px 42px;box-shadow:0 24px 54px rgba(230,57,70,.28),0 0 0 1px rgba(230,57,70,.15)">Chci virtuální staging pro svůj byt</a>
-            <div style="text-align:center;margin-top:20px;">
-              <a href="reference.html" class="btn btn-secondary"
-                 style="padding:12px 24px;font-size:.9rem;">
-                Zobrazit všechny reference
-              </a>
-            </div>
+          <h2 class="ref-section-title">Virtuální staging</h2>
+          <p class="ref-section-desc">
+            Prázdný byt doplníme o nábytek a atmosféru přímo do fotek —
+            bez stěhování, bez fyzického vybavení.
+          </p>
+          <div class="ref-grid" id="grid-staging">
           </div>
         </div>
       </section>
 
-      <section id="renovation">
+      <section id="ref-premena" class="ref-section">
         <div class="section-inner">
-          <div class="staging-intro">
-            <span class="eyebrow"><span></span>Starý byt, nová tvář</span>
-            <h2 class="section-title">Promění zastaralý byt v moderní bydlení</h2>
-            <p class="staging-subheading">Stejné zdi, stejná dispozice&nbsp;— jiný styl, jiná cena</p>
-            <p class="staging-desc">Stará kuchyňská linka, omšelé obklady, dožilá podlaha&nbsp;— to vše odrazuje kupující dřív, než si stihnou všimnout výhod bytu. Aniž byste cokoliv bourali nebo malovali, ukážeme zájemcům, jak prostor vypadá po modernizaci. Funguje na obydlené i starší byty&nbsp;— výsledek zvyšuje zájem a urychluje rozhodnutí kupujícího.</p>
-          </div>
-          <!-- Before/after sliders — konfigurujte přes pole renovationPairs v JS níže -->
-          <div id="renovationSliders"></div>
-          <div class="staging-cta">
-            <a class="btn btn-primary" href="#contact" style="font-size:1.05rem;padding:18px 42px;box-shadow:0 24px 54px rgba(230,57,70,.28),0 0 0 1px rgba(230,57,70,.15)">Chci proměnu interiéru pro svůj byt</a>
-            <p class="staging-desc" style="margin-top:14px;text-align:center;">Stejná cena jako staging &middot; <strong style="color:var(--text)">od 300 Kč</strong> za místnost</p>
-            <div style="text-align:center;margin-top:20px;">
-              <a href="reference.html" class="btn btn-secondary"
-                 style="padding:12px 24px;font-size:.9rem;">
-                Zobrazit všechny reference
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="pricing">
-        <div class="section-inner">
-          <h2 class="section-title">Speciální nabídka a ceny, které fungují</h2>
-          <p class="section-subtitle">Vyberte si balíček s jasnou cenou a časově omezenou akcí, která přinese výsledky.</p>
-          <div class="grid pricing-grid">
-            <div class="price-card">
-              <span class="badge">2D půdorys</span>
-              <h3>od 400 Kč</h3>
-              <ul>
-                <li>do 24 hodin</li>
-                <li>pro byty do 100 m²</li>
-                <li>jasné rozložení místností, kóty a orientace</li>
-              </ul>
-            </div>
-            <div class="price-card popular">
-              <span class="badge">Nejoblíbenější</span>
-              <h3>Virtuální staging</h3>
-              <strong>od 300 Kč / místnost</strong>
-              <ul>
-                <li>fotorealistický vybavený interiér</li>
-                <li>3 místnosti za 800 Kč</li>
-                <li>celý byt (5 místností) za 1 250 Kč</li>
-                <li>1 revize stylu zdarma</li>
-              </ul>
-            </div>
-            <div class="price-card">
-              <span class="badge">Kompletní balíček</span>
-              <h3>2D + staging</h3>
-              <strong>od 900 Kč</strong>
-              <ul>
-                <li>2D půdorys + staging 2 místností</li>
-                <li>doporučeno pro maximální konverzi inzerátu</li>
-                <li>dodání do 48 hodin</li>
-              </ul>
-            </div>
-          </div>
-          <p class="section-subtitle">Větší projekt? Napište nám pro individuální nabídku.</p>
-        </div>
-      </section>
-      <section id="faq">
-        <div class="section-inner">
-          <h2 class="section-title">FAQ</h2>
-          <p class="section-subtitle">Odpovídáme na nejčastější dotazy, aby pro vás spolupráce byla jasná od začátku.</p>
-          <div class="grid faq-grid">
-            <div class="faq-item">
-              <h4>Co potřebujete od nás?</h4>
-              <p>Náčrtek, fotku nebo PDF půdorysu stačí. My z toho vytvoříme finální návrh.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Jak přiložit náčrtek?</h4>
-              <p>Klikněte na tlačítko vybrat soubor a nahrajte JPG, PNG nebo PDF. Můžete poslat i fotku z mobilu.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Jak rychle dostanu půdorys?</h4>
-              <p>24 hodin standardně pro 2D půdorys. Virtuální staging do 48 hodin. Expresní dodání je možné po domluvě.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Jaký je výstupní formát?</h4>
-              <p>JPG 4K a PDF připravené k publikaci do inzerátu. Když chcete, pošleme i PNG.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Jak zaplatím?</h4>
-              <p>Převodem po dodání. Fakturu vám vystavíme do e-mailu. Platba je pohodlná a bezpečná.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Co když nebudu spokojený?</h4>
-              <p>Máte u nás 1 revizi zdarma, abychom upravili návrh podle vašich potřeb.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Lze využít pro všechny typy nemovitostí?</h4>
-              <p>Ano — byty, domy i jiné prostory. Přizpůsobíme výstup tak, aby vaše inzerce zaujala.</p>
-            </div>
-            <div class="faq-item">
-              <h4>Jak dlouho akce běží?</h4>
-              <p>Platí 48 hodin a pak se automaticky obnoví do nové nabídky. Sledujte časovač v horní části stránky.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-      <section id="contact">
-        <div class="section-inner">
-          <h2 class="section-title">Pošlete nám náčrtek a dostanete ukázku zdarma</h2>
-          <p class="section-subtitle">Vyplňte poptávku a my vám připravíme první návrh bez závazků.</p>
-          <div class="grid contact-grid">
-            <div class="contact-info">
-              <div class="card">
-                <h4>Rychlá poptávka</h4>
-                <p>Vyplňte formulář, přiložte náčrtek a my se ozveme s nabídkou do 24 hodin.</p>
-                <p><strong>Telefon:</strong> <a href="tel:+420734106721">+420 734 106 721</a></p>
-                <p><strong>Email:</strong> <a href="mailto:atraktivninemovitost@gmail.com">atraktivninemovitost@gmail.com</a></p>
-                <div style="display:flex; gap:12px; margin-top:16px; flex-wrap:wrap;">
-                  <a href="tel:+420734106721" class="btn btn-primary" style="padding:12px 20px; font-size:.95rem;"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>Zavolat</a>
-                  <a href="mailto:atraktivninemovitost@gmail.com" class="btn btn-secondary" style="padding:12px 20px; font-size:.95rem;">✉️ Napsat email</a>
-                </div>
-              </div>
-              <div class="card">
-                <h4>Proč nás vybrat?</h4>
-                <p>Profesionální 2D půdorysy a virtuální staging vašich nemovitostí — doručení do 24 hodin.</p>
-              </div>
-            </div>
-            <form id="contactForm" action="https://formsubmit.co/atraktivninemovitost@gmail.com" method="POST" enctype="multipart/form-data" novalidate>
-              <input type="hidden" name="_subject" value="Nová poptávka z webu">
-              <input type="hidden" name="_template" value="table">
-              <input type="hidden" name="_captcha" value="false">
-              <label>
-                Jméno
-                <input type="text" name="name" id="name" placeholder="Petr Novák" required>
-              </label>
-              <label>
-                Email
-                <input type="email" name="email" id="email" placeholder="petr@priklad.cz" required>
-              </label>
-              <label>
-                Telefon
-                <input type="tel" name="phone" id="phone" placeholder="+420 777 123 456" required>
-              </label>
-              <label>
-                Typ nemovitosti
-                <select name="propertyType" id="propertyType" required>
-                  <option value="">Vyberte typ</option>
-                  <option value="byt">Byt</option>
-                  <option value="dum">Dům</option>
-                  <option value="jine">Jiné</option>
-                </select>
-              </label>
-              <label>
-                Zpráva
-                <textarea name="message" id="message" placeholder="Popište lokalitu, velikost a vaše požadavky..."></textarea>
-              </label>
-              <label class="file-upload">
-                Přiložit náčrtek
-                <span class="file-picker" id="filePicker">Vybrat soubor</span>
-                <input type="file" name="file" id="file" accept="image/*,.pdf">
-                <span class="file-name" id="fileName">Žádný soubor nebyl vybrán</span>
-              </label>
-              <div class="form-footer">
-                <button class="btn btn-primary" type="submit">Odeslat poptávku</button>
-                <p class="form-note">Stále raději voláte? <a href="tel:+420734106721">Zavolejte nám: +420 734 106 721</a> nebo napište na <a href="mailto:atraktivninemovitost@gmail.com">atraktivninemovitost@gmail.com</a>.</p>
-              </div>
-            </form>
+          <h2 class="ref-section-title">Proměna interiéru</h2>
+          <p class="ref-section-desc">
+            Zastaralý byt vizuálně modernizujeme — kupující vidí potenciál
+            nemovitosti bez nutnosti reálné rekonstrukce.
+          </p>
+          <div class="ref-grid" id="grid-premena">
           </div>
         </div>
       </section>
@@ -1066,9 +949,9 @@
           <p style="color: var(--muted); margin-top: 12px;">Profesionální 2D půdorysy a virtuální staging pro realitní makléře v ČR.</p>
         </div>
         <div class="footer-links">
-          <a href="#hero">Domů</a>
-          <a href="#pricing">Ceník</a>
-          <a href="#contact">Kontakt</a>
+          <a href="index.html#hero">Domů</a>
+          <a href="index.html#pricing">Ceník</a>
+          <a href="index.html#contact">Kontakt</a>
           <a href="mailto:atraktivninemovitost@gmail.com">atraktivninemovitost@gmail.com</a>
           <a href="tel:+420734106721">+420 734 106 721</a>
         </div>
@@ -1083,15 +966,26 @@
     <div class="nav-mobile-overlay" id="navOverlay"></div>
     <nav class="nav-mobile" id="navMobile">
       <button class="burger-close" id="navClose">✕</button>
-      <a href="#problem" onclick="closeMobileNav()">Máte málo zájemců?</a>
-      <a href="#solution" onclick="closeMobileNav()">Jak to funguje?</a>
-      <a href="#staging" onclick="closeMobileNav()">Služby</a>
-      <a href="#pricing" onclick="closeMobileNav()">Ceník</a>
+      <a href="index.html#problem" onclick="closeMobileNav()">Máte málo zájemců?</a>
+      <a href="index.html#solution" onclick="closeMobileNav()">Jak to funguje?</a>
+      <a href="index.html#staging" onclick="closeMobileNav()">Služby</a>
+      <a href="index.html#pricing" onclick="closeMobileNav()">Ceník</a>
       <a href="reference.html" onclick="closeMobileNav()">Reference</a>
-      <a href="#contact" onclick="closeMobileNav()">Kontakt</a>
-      <a href="#contact" class="nav-cta" onclick="closeMobileNav()">Chci nabídku</a>
+      <a href="index.html#contact" onclick="closeMobileNav()">Kontakt</a>
+      <a href="index.html#contact" class="nav-cta" onclick="closeMobileNav()">Chci nabídku</a>
     </nav>
     <div class="phone-float"><a href="tel:+420734106721"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 6.18 6.18l.91-.91a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>+420 734 106 721</a></div>
+
+    <div class="lb-overlay" id="lb-overlay">
+      <button class="lb-close" id="lb-close">&#x2715;</button>
+      <span class="lb-counter" id="lb-counter"></span>
+      <div style="position:relative;display:flex;align-items:center;
+                  gap:12px;width:100%;max-width:960px;justify-content:center;">
+        <button class="lb-nav lb-prev" onclick="lbNav(-1)">&#8592;</button>
+        <div class="lb-content" id="lb-content"></div>
+        <button class="lb-nav lb-next" onclick="lbNav(1)">&#8594;</button>
+      </div>
+    </div>
   </div>
   <script>
 
@@ -1103,32 +997,6 @@
     window.addEventListener('resize', syncHeaderPadding);
     setTimeout(syncHeaderPadding, 100);
     setTimeout(syncHeaderPadding, 500);
-
-    // ===== SHOWROOM JS =====
-    function switchProject(id, btn) {
-      document.querySelectorAll('.proj-tab').forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.proj-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('panel-' + id).classList.add('active');
-    }
-
-    const _stageInfo = {
-      sketch: { num: '1', title: 'Náčrtek od makléře',        desc: 'Stačí fotka z mobilu nebo naskenovaný papír. Z tohoto podkladu vytvoříme přesný digitální půdorys.' },
-      '2d':   { num: '2', title: 'Profesionální 2D půdorys',  desc: 'Čisté kóty, rozlohy místností, orientace — připraveno k inzerci. Formát JPG 4K nebo PDF.' }
-    };
-
-    function switchStep(apt, step, btn) {
-      var panel = document.getElementById('panel-' + apt);
-      panel.querySelectorAll('.step-btn').forEach(function(b){ b.classList.remove('active'); });
-      panel.querySelectorAll('.stage-frame').forEach(function(f){ f.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById(apt + '-' + step).classList.add('active');
-      var info = document.getElementById(apt + '-info');
-      var d = _stageInfo[step];
-      info.querySelector('.stage-info-num').textContent = d.num;
-      info.querySelector('h4').textContent = d.title;
-      info.querySelector('p').textContent = d.desc;
-    }
 
     const sections = document.querySelectorAll('section');
     const observer = new IntersectionObserver((entries) => {
@@ -1151,20 +1019,6 @@
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape') closeMobileNav();
     });
-
-    const form = document.getElementById('contactForm');
-    form.addEventListener('submit', (event) => {
-      const name  = document.getElementById('name');
-      const email = document.getElementById('email');
-      const phone = document.getElementById('phone');
-      const type  = document.getElementById('propertyType');
-      const missing = [name, email, phone, type].find(f => !f.value.trim());
-      if (missing) { event.preventDefault(); missing.focus(); return; }
-      if (!email.value.includes('@')) { event.preventDefault(); email.focus(); return; }
-      if (phone.value.replace(/\s/g, '').length < 9) { event.preventDefault(); phone.focus(); return; }
-      // validace ok — form se odešle přirozeně jako POST na FormSubmit
-    });
-
 
     const offerMessage = document.getElementById('offerMessage');
     const countdown = document.getElementById('countdown');
@@ -1196,111 +1050,293 @@
     updateCountdown();
     setInterval(updateCountdown, 1000);
 
-    // ===== VIRTUAL STAGING SLIDER =====
-    // Pro přidání dalšího páru stačí vložit objekt do pole:
-    // { before: 'img/staging/byt2-pred.jpg', after: 'img/staging/byt2-po.jpg', label: 'Ložnice' }
-    var stagingPairs = [
-      { before: 'po.png', after: 'pred.jpg', label: 'Obývací pokoj' }
-    ];
+    // ===== REFERENCE DATA =====
+    // Typ 'single' = jedna fotka (půdorysy)
+    // Typ 'slider' = before/after (staging, proměna)
 
-    (function() {
-      var cont = document.getElementById('stagingSliders');
-      if (!cont) return;
-      stagingPairs.forEach(function(pair, idx) {
-        var wrap = document.createElement('div');
-        wrap.className = 'staging-slider-wrap';
-        wrap.innerHTML =
-          '<div class="staging-slider" id="stSlider-' + idx + '">' +
-            '<img class="staging-before staging-img-cover" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před virtuálním stagingem">' +
-            '<img class="staging-after staging-img-cover" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po virtuálním stagingu">' +
-            '<div class="staging-divider">' +
-              '<div class="staging-handle">' +
-                '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">' +
-                  '<path d="M6 1L1 7l5 6M16 1l5 6-5 6M1 7h20" stroke="#222" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' +
-                '</svg>' +
-              '</div>' +
-            '</div>' +
-            '<span class="staging-label staging-label-before">PŘED</span>' +
-            '<span class="staging-label staging-label-after">PO</span>' +
-          '</div>';
-        cont.appendChild(wrap);
+    var refProjects = {
+      pudorysy: [
+        {
+          type: 'single',
+          img: '2+1po.png',
+          title: 'Byt 2+1',
+          sub: 'Praha · 58 m²',
+          fallback: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'single',
+          img: '2+kk2dpo.png',
+          title: 'Byt 2+kk',
+          sub: 'Praha Holešovice · 64 m²',
+          fallback: 'https://images.unsplash.com/photo-1574359411062-d42c7399b8e7?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'single',
+          img: '4+kk2dpo.png',
+          title: 'Byt 4+kk',
+          sub: 'Praha · 95 m²',
+          fallback: 'https://images.unsplash.com/photo-1556909172-54557c7e4fb7?auto=format&fit=crop&w=900&q=80'
+        }
+      ],
+      staging: [
+        {
+          type: 'slider',
+          before: 'staging1pred.jpg',
+          after: 'staging1po.jpg',
+          title: 'Virtuální staging č. 1',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging2pred.jpg',
+          after: 'staging2po.jpg',
+          title: 'Virtuální staging č. 2',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging3pred.jpg',
+          after: 'staging3po.jpg',
+          title: 'Virtuální staging č. 3',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging4pred.jpg',
+          after: 'staging4po.jpg',
+          title: 'Virtuální staging č. 4',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging5pred.jpg',
+          after: 'staging5po.jpg',
+          title: 'Virtuální staging č. 5',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging6pred.jpg',
+          after: 'staging6po.jpg',
+          title: 'Virtuální staging č. 6',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging7pred.jpg',
+          after: 'staging7po.jpg',
+          title: 'Virtuální staging č. 7',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'staging8pred.jpg',
+          after: 'staging8po.jpg',
+          title: 'Virtuální staging č. 8',
+          sub: 'Prázdný byt → vybavený interiér',
+          fallbackBefore: 'https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=80'
+        }
+      ],
+      premena: [
+        {
+          type: 'slider',
+          before: 'stary1po.jpg',
+          after: 'stary1pred.jpg',
+          title: 'Proměna interiéru č. 1',
+          sub: 'Starý byt → moderní bydlení',
+          fallbackBefore: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'stary2pred.jpg',
+          after: 'stary2po.jpg',
+          title: 'Proměna interiéru č. 2',
+          sub: 'Starý byt → moderní bydlení',
+          fallbackBefore: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'stary3pred.jpg',
+          after: 'stary3po.jpg',
+          title: 'Proměna interiéru č. 3',
+          sub: 'Starý byt → moderní bydlení',
+          fallbackBefore: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'stary4pred.jpg',
+          after: 'stary4po.jpg',
+          title: 'Proměna interiéru č. 4',
+          sub: 'Starý byt → moderní bydlení',
+          fallbackBefore: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80'
+        },
+        {
+          type: 'slider',
+          before: 'stary5pred.jpg',
+          after: 'stary5po.jpg',
+          title: 'Proměna interiéru č. 5',
+          sub: 'Starý byt → moderní bydlení',
+          fallbackBefore: 'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=900&q=80',
+          fallbackAfter: 'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=900&q=80'
+        }
+      ]
+    };
 
-        var slider = document.getElementById('stSlider-' + idx);
-        var afterImg = slider.querySelector('.staging-after');
-        var divider = slider.querySelector('.staging-divider');
-        var active = false;
+    function renderGrid(projects, gridId) {
+      var grid = document.getElementById(gridId);
+      if (!grid) return;
+      projects.forEach(function(p, idx) {
+        var card = document.createElement('div');
+        card.className = 'ref-card';
+        card.setAttribute('data-idx', idx);
+        card.setAttribute('data-grid', gridId);
 
-        function moveTo(clientX) {
-          var r = slider.getBoundingClientRect();
+        if (p.type === 'single') {
+          card.innerHTML =
+            '<img class="ref-card-img" src="' + p.img + '" ' +
+            'onerror="this.onerror=null;this.src=\'' + p.fallback + '\'" ' +
+            'alt="' + p.title + '" loading="lazy">' +
+            '<span class="ref-card-badge">2D půdorys</span>' +
+            '<div class="ref-card-body">' +
+              '<p class="ref-card-title">' + p.title + '</p>' +
+              '<p class="ref-card-sub">' + p.sub + '</p>' +
+            '</div>';
+        } else {
+          card.innerHTML =
+            '<img class="ref-card-img" src="' + p.after + '" ' +
+            'onerror="this.onerror=null;this.src=\'' + p.fallbackAfter + '\'" ' +
+            'alt="' + p.title + '" loading="lazy">' +
+            '<span class="ref-card-badge slider-badge">Před / Po ↔</span>' +
+            '<div class="ref-card-body">' +
+              '<p class="ref-card-title">' + p.title + '</p>' +
+              '<p class="ref-card-sub">' + p.sub + '</p>' +
+            '</div>';
+        }
+
+        card.addEventListener('click', function() {
+          openLightbox(gridId, idx);
+        });
+        grid.appendChild(card);
+      });
+    }
+
+    renderGrid(refProjects.pudorysy, 'grid-pudorysy');
+    renderGrid(refProjects.staging,  'grid-staging');
+    renderGrid(refProjects.premena,  'grid-premena');
+
+    // ===== LIGHTBOX =====
+    var lbState = { gridId: null, idx: 0, sliderActive: false };
+
+    var lbOverlay  = document.getElementById('lb-overlay');
+    var lbContent  = document.getElementById('lb-content');
+    var lbCounter  = document.getElementById('lb-counter');
+
+    function getProjects(gridId) {
+      if (gridId === 'grid-pudorysy') return refProjects.pudorysy;
+      if (gridId === 'grid-staging')  return refProjects.staging;
+      if (gridId === 'grid-premena')  return refProjects.premena;
+      return [];
+    }
+
+    function openLightbox(gridId, idx) {
+      lbState.gridId = gridId;
+      lbState.idx = idx;
+      lbOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      renderLbContent();
+    }
+
+    function closeLightbox() {
+      lbOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+      lbContent.innerHTML = '';
+      lbState.sliderActive = false;
+    }
+
+    function renderLbContent() {
+      var projects = getProjects(lbState.gridId);
+      var p = projects[lbState.idx];
+      lbCounter.textContent = (lbState.idx + 1) + ' / ' + projects.length;
+      lbContent.innerHTML = '';
+
+      if (p.type === 'single') {
+        var img = document.createElement('img');
+        img.className = 'lb-img';
+        img.src = p.img;
+        img.onerror = function() { this.src = p.fallback; };
+        img.alt = p.title;
+        lbContent.appendChild(img);
+      } else {
+        // Before/after slider v lightboxu
+        var sl = document.createElement('div');
+        sl.className = 'lb-slider';
+        sl.innerHTML =
+          '<img class="lb-before" src="' + p.after + '" ' +
+          'onerror="this.onerror=null;this.src=\'' + p.fallbackAfter + '\'" alt="Před">' +
+          '<img class="lb-after" src="' + p.before + '" ' +
+          'onerror="this.onerror=null;this.src=\'' + p.fallbackBefore + '\'" alt="Po">' +
+          '<div class="lb-divider"><div class="lb-handle">' +
+            '<svg width="22" height="14" viewBox="0 0 22 14" fill="none">' +
+              '<path d="M6 1L1 7l5 6M16 1l5 6-5 6M1 7h20" stroke="#222" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg></div></div>' +
+          '<span class="lb-label lb-label-before">PŘED</span>' +
+          '<span class="lb-label lb-label-after">PO</span>';
+        lbContent.appendChild(sl);
+
+        // Slider logika
+        var afterImg = sl.querySelector('.lb-after');
+        var divider  = sl.querySelector('.lb-divider');
+        var dragging = false;
+
+        function sliderMove(clientX) {
+          var r = sl.getBoundingClientRect();
           var pct = Math.max(2, Math.min(98, ((clientX - r.left) / r.width) * 100));
           afterImg.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
           divider.style.left = pct.toFixed(2) + '%';
         }
+        sl.addEventListener('mousedown', function(e) { dragging = true; sliderMove(e.clientX); e.stopPropagation(); });
+        document.addEventListener('mousemove', function(e) { if (dragging) sliderMove(e.clientX); });
+        document.addEventListener('mouseup',   function()  { dragging = false; });
+        sl.addEventListener('touchstart', function(e) { dragging = true; sliderMove(e.touches[0].clientX); }, { passive: true });
+        sl.addEventListener('touchmove',  function(e) { if (dragging) sliderMove(e.touches[0].clientX); }, { passive: true });
+        sl.addEventListener('touchend',   function()  { dragging = false; });
+      }
+    }
 
-        slider.addEventListener('mousedown', function(e) { active = true; moveTo(e.clientX); e.preventDefault(); });
-        document.addEventListener('mousemove', function(e) { if (active) moveTo(e.clientX); });
-        document.addEventListener('mouseup', function() { active = false; });
-        slider.addEventListener('touchstart', function(e) { active = true; moveTo(e.touches[0].clientX); }, { passive: true });
-        slider.addEventListener('touchmove', function(e) { if (active) moveTo(e.touches[0].clientX); }, { passive: true });
-        slider.addEventListener('touchend', function() { active = false; });
-      });
-    })();
+    function lbNav(dir) {
+      var projects = getProjects(lbState.gridId);
+      lbState.idx = (lbState.idx + dir + projects.length) % projects.length;
+      renderLbContent();
+    }
 
-    // ===== RENOVATION SLIDER (stejný mechanismus jako VIRTUAL STAGING SLIDER výše) =====
-    // Pro přidání dalšího páru stačí vložit objekt do pole:
-    // { before: 'img/renovation/byt2-pred.jpg', after: 'img/renovation/byt2-po.jpg', label: 'Koupelna' }
-    var renovationPairs = [
-      { before: 'oldpo.png', after: 'oldpred.jpg', label: 'Kuchyně' }
-    ];
-
-    (function() {
-      var cont = document.getElementById('renovationSliders');
-      if (!cont) return;
-      renovationPairs.forEach(function(pair, idx) {
-        var wrap = document.createElement('div');
-        wrap.className = 'staging-slider-wrap';
-        wrap.innerHTML =
-          '<div class="staging-slider" id="rnSlider-' + idx + '">' +
-            '<img class="staging-before staging-img-cover" src="' + pair.before + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1505873242700-f289a29e1e0f?auto=format&fit=crop&w=1200&q=80\'" alt="Byt před renovací">' +
-            '<img class="staging-after staging-img-cover" src="' + pair.after + '" onerror="this.onerror=null;this.src=\'https://images.unsplash.com/photo-1484154218962-a197022b5858?auto=format&fit=crop&w=1200&q=80\'" alt="Byt po renovaci">' +
-            '<div class="staging-divider">' +
-              '<div class="staging-handle">' +
-                '<svg width="22" height="14" viewBox="0 0 22 14" fill="none" aria-hidden="true">' +
-                  '<path d="M6 1L1 7l5 6M16 1l5 6-5 6M1 7h20" stroke="#222" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/>' +
-                '</svg>' +
-              '</div>' +
-            '</div>' +
-            '<span class="staging-label staging-label-before">PŘED</span>' +
-            '<span class="staging-label staging-label-after">PO</span>' +
-          '</div>';
-        cont.appendChild(wrap);
-
-        var slider = document.getElementById('rnSlider-' + idx);
-        var afterImg = slider.querySelector('.staging-after');
-        var divider = slider.querySelector('.staging-divider');
-        var active = false;
-
-        function moveTo(clientX) {
-          var r = slider.getBoundingClientRect();
-          var pct = Math.max(2, Math.min(98, ((clientX - r.left) / r.width) * 100));
-          afterImg.style.clipPath = 'inset(0 ' + (100 - pct).toFixed(2) + '% 0 0)';
-          divider.style.left = pct.toFixed(2) + '%';
-        }
-
-        slider.addEventListener('mousedown', function(e) { active = true; moveTo(e.clientX); e.preventDefault(); });
-        document.addEventListener('mousemove', function(e) { if (active) moveTo(e.clientX); });
-        document.addEventListener('mouseup', function() { active = false; });
-        slider.addEventListener('touchstart', function(e) { active = true; moveTo(e.touches[0].clientX); }, { passive: true });
-        slider.addEventListener('touchmove', function(e) { if (active) moveTo(e.touches[0].clientX); }, { passive: true });
-        slider.addEventListener('touchend', function() { active = false; });
-      });
-    })();
-
-    const fileInput = document.getElementById('file');
-    const fileName = document.getElementById('fileName');
-    document.getElementById('filePicker').addEventListener('click', () => fileInput.click());
-    fileInput.addEventListener('change', () => {
-      fileName.textContent = fileInput.files.length ? fileInput.files[0].name : 'Žádný soubor nebyl vybrán';
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    lbOverlay.addEventListener('click', function(e) {
+      if (e.target === lbOverlay) closeLightbox();
+    });
+    document.addEventListener('keydown', function(e) {
+      if (!lbOverlay.classList.contains('open')) return;
+      if (e.key === 'ArrowLeft')  lbNav(-1);
+      if (e.key === 'ArrowRight') lbNav(1);
+      if (e.key === 'Escape')     closeLightbox();
     });
   </script>
   <script src="cookies.js"></script>
